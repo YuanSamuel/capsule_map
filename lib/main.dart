@@ -1,7 +1,7 @@
 import 'package:capsule_map/screens/root_screen.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:capsule_map/stores/positionStore/position_store.dart';
-import 'package:firebase_core/firebasecore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<MainStore>(
-          create: () => MainStore()..setupReactions(),
+          create: (_) => MainStore()..setupReactions(),
         ),
         Provider<PositionStore>(
             create: (_) => PositionStore()..checkPermissions()),

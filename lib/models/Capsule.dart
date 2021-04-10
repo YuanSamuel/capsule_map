@@ -5,6 +5,8 @@ class Capsule {
   String title;
   String description;
   GeoPoint location;
+  List<String> imageUrls;
+  List<String> videoUrls;
   DateTime created;
 
   DocumentReference reference;
