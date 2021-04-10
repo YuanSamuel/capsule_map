@@ -76,6 +76,7 @@ flutter:
   - family: Open_Sans
     fonts:
     - asset: fonts/OpenSans-Regular.ttf
+    - asset: fonts/OpenSans-Light.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

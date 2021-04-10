@@ -31,16 +31,22 @@ abstract class _MainStore with Store {
 
   void setupReactions() {
     _dispose = autorun((_) {
+      print('run');
       print(currentUser.value);
       if (loggedIn) {
-        userStore.setUpStream(currentUser.data.uid);
-        if (userStore.user.capsules != null) {
+        if (userStore.userStream == null) {
+          userStore.setUpStream(currentUser.data.uid);
+        }
+        if (userStore.user.capsules != null &&
+            userStore.user.capsules.isNotEmpty) {
           capsulesStore.setUpStream(userStore.user.capsules);
         }
-        if (userStore.user.friendCapsules != null) {
+        if (userStore.user.friendCapsules != null &&
+            userStore.user.friendCapsules.isNotEmpty) {
           friendCapsulesStore.setUpStream(userStore.user.friendCapsules);
         }
-        if (userStore.user.friendCapsulesOpened != null) {
+        if (userStore.user.friendCapsulesOpened != null &&
+            userStore.user.friendCapsulesOpened.isNotEmpty) {
           friendCapsulesOpenedStore
               .setUpStream(userStore.user.friendCapsulesOpened);
         }
