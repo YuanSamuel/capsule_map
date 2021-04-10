@@ -1,16 +1,31 @@
-import 'package:capsule_map/screens/addfriends_screen.dart';
+import 'package:capsule_map/screens/root_screen.dart';
+import 'package:capsule_map/stores/mainStore/main_store.dart';
+import 'package:capsule_map/stores/positionStore/position_store.dart';
+import 'package:firebase_core/firebasecore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AddFriendsScreen(),
+    return MultiProvider(
+      providers: [
+        Provider<MainStore>(
+          create: () => MainStore()..setupReactions(),
+        ),
+        Provider<PositionStore>(
+            create: (_) => PositionStore()..checkPermissions()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: RootScreen(),
+      ),
     );
   }
 }
