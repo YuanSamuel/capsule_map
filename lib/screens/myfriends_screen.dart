@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-class FriendRequestScreen extends StatefulWidget {
+class MyFriendsScreen extends StatefulWidget {
   @override
-  _FriendRequestScreenState createState() => _FriendRequestScreenState();
+  _MyFriendsScreenState createState() => _MyFriendsScreenState();
 }
 
-class _FriendRequestScreenState extends State<FriendRequestScreen> {
+class _MyFriendsScreenState extends State<MyFriendsScreen> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -26,7 +26,7 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
             },
           ),
           title: Text(
-            'Friend Request',
+            'My Friends',
             style: TextStyle(
               color: Colors.blueAccent,
             ),
@@ -56,15 +56,7 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
                       ),
                     ),
                     SizedBox(width: 30),
-                    IconButton(
-                      icon: Icon(
-                        Icons.check,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {
-                        // do something
-                      },
-                    ),
+
                     IconButton(
                       icon: Icon(
                         Icons.close_rounded,
@@ -102,15 +94,7 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
                       ),
                     ),
                     SizedBox(width: 30),
-                    IconButton(
-                      icon: Icon(
-                        Icons.check,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {
-                        // do something
-                      },
-                    ),
+
                     IconButton(
                       icon: Icon(
                         Icons.close_rounded,
@@ -149,15 +133,7 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
                       ),
                     ),
                     SizedBox(width: 30),
-                    IconButton(
-                      icon: Icon(
-                        Icons.check,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {
-                        // do something
-                      },
-                    ),
+
                     IconButton(
                       icon: Icon(
                         Icons.close_rounded,
@@ -194,15 +170,7 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
                       ),
                     ),
                     SizedBox(width: 30),
-                    IconButton(
-                      icon: Icon(
-                        Icons.check,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {
-                        // do something
-                      },
-                    ),
+
                     IconButton(
                       icon: Icon(
                         Icons.close_rounded,
