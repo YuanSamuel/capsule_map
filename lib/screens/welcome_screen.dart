@@ -1,3 +1,5 @@
+import 'package:capsule_map/screens/signin_screen.dart';
+import 'package:capsule_map/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -57,20 +59,28 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             SizedBox(
               height: height * 0.09,
             ),
-            Container(
-              height: height * 0.06,
-              width: width * 0.7,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Colors.blue[900],
-              ),
-              child: Center(
-                child: Text(
-                  'LOG IN',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignInScreen()),
+                );
+              },
+              child: Container(
+                height: height * 0.06,
+                width: width * 0.7,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  color: Colors.blue[900],
+                ),
+                child: Center(
+                  child: Text(
+                    'LOG IN',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),
@@ -78,20 +88,28 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             SizedBox(
               height: height * 0.03,
             ),
-            Container(
-              height: height * 0.06,
-              width: width * 0.7,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Colors.blue[900],
-              ),
-              child: Center(
-                child: Text(
-                  'SIGN UP',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpScreen()),
+                );
+              },
+              child: Container(
+                height: height * 0.06,
+                width: width * 0.7,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  color: Colors.blue[900],
+                ),
+                child: Center(
+                  child: Text(
+                    'SIGN UP',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),

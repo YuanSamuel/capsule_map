@@ -10,6 +10,8 @@ abstract class _UserStore with Store {
   @computed
   User get user {
     if (setUp) {
+      print('got user');
+      print(userStream.value);
       return User.fromSnapshot(userStream.value);
     } else {
       return null;
@@ -21,6 +23,7 @@ abstract class _UserStore with Store {
 
   @action
   void setUpStream(String uid) {
+    print(uid);
     userStream = FirebaseFirestore.instance
         .collection('users')
         .doc(uid)
