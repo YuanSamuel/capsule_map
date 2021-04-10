@@ -36,7 +36,7 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
                 // do something
               },
             ),
-          title: Text('Friend Request'),
+          //title: Text('Friend Request'),
           centerTitle:true,
 
 
