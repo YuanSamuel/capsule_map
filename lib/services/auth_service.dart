@@ -11,7 +11,7 @@ class AuthService {
         .collection('users')
         .where('username', isEqualTo: username)
         .get();
-    if (users.size == 0) {
+    if (users.size != 0) {
       return 'Username is in use';
     } else {
       auth.UserCredential userCredential = await _firebaseAuth

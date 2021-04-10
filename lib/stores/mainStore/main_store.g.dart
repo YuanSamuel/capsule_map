@@ -61,12 +61,47 @@ mixin _$MainStore on _MainStore, Store {
     });
   }
 
+  final _$friendCapsulesStoreAtom =
+      Atom(name: '_MainStore.friendCapsulesStore');
+
+  @override
+  FriendCapsulesStore get friendCapsulesStore {
+    _$friendCapsulesStoreAtom.reportRead();
+    return super.friendCapsulesStore;
+  }
+
+  @override
+  set friendCapsulesStore(FriendCapsulesStore value) {
+    _$friendCapsulesStoreAtom.reportWrite(value, super.friendCapsulesStore, () {
+      super.friendCapsulesStore = value;
+    });
+  }
+
+  final _$friendCapsulesOpenedStoreAtom =
+      Atom(name: '_MainStore.friendCapsulesOpenedStore');
+
+  @override
+  FriendCapsulesOpenedStore get friendCapsulesOpenedStore {
+    _$friendCapsulesOpenedStoreAtom.reportRead();
+    return super.friendCapsulesOpenedStore;
+  }
+
+  @override
+  set friendCapsulesOpenedStore(FriendCapsulesOpenedStore value) {
+    _$friendCapsulesOpenedStoreAtom
+        .reportWrite(value, super.friendCapsulesOpenedStore, () {
+      super.friendCapsulesOpenedStore = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 currentUser: ${currentUser},
 userStore: ${userStore},
 capsulesStore: ${capsulesStore},
+friendCapsulesStore: ${friendCapsulesStore},
+friendCapsulesOpenedStore: ${friendCapsulesOpenedStore},
 loggedIn: ${loggedIn}
     ''';
   }
