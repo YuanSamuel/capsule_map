@@ -1,10 +1,8 @@
 import 'package:capsule_map/screens/root_screen.dart';
-import 'package:capsule_map/screens/signup_screen.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:capsule_map/stores/positionStore/position_store.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
