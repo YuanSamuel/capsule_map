@@ -2,6 +2,7 @@ import 'package:capsule_map/screens/capsules/capsules_screen.dart';
 import 'package:capsule_map/screens/home_screen.dart';
 import 'package:capsule_map/screens/profile_screen.dart';
 import 'package:capsule_map/screens/signup_screen.dart';
+import 'package:capsule_map/screens/welcome_screen.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -20,27 +21,31 @@ class _RootScreenState extends State<RootScreen> {
   @override
   Widget build(BuildContext context) {
     MainStore mainStore = Provider.of<MainStore>(context);
-    return Observer(
-        builder: (_) => mainStore.loggedIn
-            ? Scaffold(
-                bottomNavigationBar: BottomNavigationBar(
-                  currentIndex: _currentIndex,
-                  onTap: (int index) {
-                    setState(() {
-                      _currentIndex = index;
-                    });
-                  },
-                  items: [
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.home_outlined), label: 'Home'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.list_outlined), label: 'Capsules'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.person_outline), label: 'Profile'),
-                  ],
-                ),
-                body: screens[_currentIndex],
-              )
-            : SignUpScreen());
+    return Observer(builder: (_) {
+      if (mainStore.loggedIn) {
+        return Scaffold(
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: (int index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home_outlined), label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.list_outlined), label: 'Capsules'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person_outline), label: 'Profile'),
+            ],
+          ),
+          body: screens[_currentIndex],
+        );
+      } else {
+        _currentIndex = 0;
+        return WelcomeScreen();
+      }
+    });
   }
 }

@@ -25,15 +25,26 @@ class _SignInScreenState extends State<SignInScreen> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(
+              height: 40.0,
+            ),
             Stack(
               children: [
                 Positioned(
+                  left: 15.0,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back_ios_rounded),
+                  ),
+                ),
+                Positioned(
                   left: 70.0,
-                  top: 30.0,
                   child: Container(
                     padding: EdgeInsets.all(100.0),
                     decoration: BoxDecoration(
@@ -140,6 +151,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               color: Color(0xffbfbfbf),
                             ),
                           ),
+                          obscureText: true,
                         ),
                       ),
                     ),
@@ -151,9 +163,13 @@ class _SignInScreenState extends State<SignInScreen> {
               height: height * 0.03,
             ),
             GestureDetector(
-              onTap: () {
-                AuthService.signIn(_emailInputController.text.trim(),
+              onTap: () async {
+                String error = await AuthService.signIn(
+                    _emailInputController.text.trim(),
                     _passwordInputController.text.trim());
+                if (error.isEmpty) {
+                  Navigator.pop(context);
+                }
               },
               child: Container(
                 height: height * 0.06,
@@ -174,15 +190,16 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ),
             ),
-            Container(
-              width: width * 0.7,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Need an account? Register.'),
-                ],
-              ),
-            )
+            SizedBox(height: 20.0),
+            // Container(
+            //   width: width * 0.7,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       Text('Need an account? Register.'),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

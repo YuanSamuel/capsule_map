@@ -31,8 +31,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(
+              height: 40.0,
+            ),
             Stack(
               children: [
+                Positioned(
+                  left: 15.0,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back_ios_rounded),
+                  ),
+                ),
                 Positioned(
                   left: 70.0,
                   child: Container(
@@ -174,6 +186,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Color(0xffbfbfbf),
                             ),
                           ),
+                          obscureText: true,
                         ),
                       ),
                     ),
@@ -186,11 +199,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             GestureDetector(
               onTap: () async {
-                print('sign up');
-                await AuthService.signUp(
+                String error = await AuthService.signUp(
                     _emailInputController.text.trim(),
                     _passwordInputController.text.trim(),
                     _usernameInputController.text.trim());
+                if (error.isEmpty) {
+                  Navigator.pop(context);
+                }
               },
               child: Container(
                 height: height * 0.06,
@@ -211,15 +226,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-            Container(
-              width: width * 0.7,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Already have an account? Login.'),
-                ],
-              ),
-            )
+            SizedBox(
+                height: 20.0
+            ),
+            // Container(
+            //   width: width * 0.7,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: [
+            //       Text('Already have an account? Login.'),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),
