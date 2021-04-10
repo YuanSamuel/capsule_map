@@ -1,4 +1,5 @@
 import 'package:capsule_map/screens/signup_screen.dart';
+import 'package:capsule_map/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignUpScreen(),
+      home: WelcomeScreen(),
     );
   }
 }
