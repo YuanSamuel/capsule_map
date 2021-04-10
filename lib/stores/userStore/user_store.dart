@@ -1,6 +1,4 @@
-import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:capsule_map/models/User.dart';
 import 'package:mobx/mobx.dart';
 

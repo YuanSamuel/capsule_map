@@ -46,11 +46,27 @@ mixin _$MainStore on _MainStore, Store {
     });
   }
 
+  final _$capsulesStoreAtom = Atom(name: '_MainStore.capsulesStore');
+
+  @override
+  CapsulesStore get capsulesStore {
+    _$capsulesStoreAtom.reportRead();
+    return super.capsulesStore;
+  }
+
+  @override
+  set capsulesStore(CapsulesStore value) {
+    _$capsulesStoreAtom.reportWrite(value, super.capsulesStore, () {
+      super.capsulesStore = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
 currentUser: ${currentUser},
 userStore: ${userStore},
+capsulesStore: ${capsulesStore},
 loggedIn: ${loggedIn}
     ''';
   }

@@ -1,3 +1,4 @@
+import 'package:capsule_map/stores/capsulesStore/capsules_store.dart';
 import 'package:capsule_map/stores/userStore/user_store.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobx/mobx.dart';
@@ -14,12 +15,18 @@ abstract class _MainStore with Store {
   @observable
   UserStore userStore = UserStore();
 
+  @observable
+  CapsulesStore capsulesStore = CapsulesStore();
+
   ReactionDisposer _dispose;
 
   void setupReactions() {
     _dispose = autorun((_) {
       if (loggedIn) {
         userStore.setUpStream(currentUser.data.uid);
+        if (userStore.user.capsules != null) {
+          capsulesStore.setUpStream(userStore.user.capsules);
+        }
       } else {
         userStore.stop();
       }
