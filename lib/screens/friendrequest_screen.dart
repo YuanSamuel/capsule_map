@@ -10,75 +10,196 @@ class FriendRequestScreen extends StatefulWidget {
 class _FriendRequestScreenState extends State<FriendRequestScreen> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery
-        .of(context)
-        .size
-        .height;
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          iconTheme: IconThemeData(
-              color: Colors.white
-          ),
-          title: const Text('Saved Suggestions', style: TextStyle(
-              color: Colors.white
-          )),
-            leading: IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios_rounded,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                // do something
-              },
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios_rounded,
+              color: Colors.black,
             ),
-          title: Text('Friend Request'),
-          centerTitle:true,
-
-
+            onPressed: () {
+              // do something
+            },
+          ),
+          title: Text(
+            'Friend Request',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
+          centerTitle: true,
         ),
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: 100.0, vertical: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 150.0, vertical: 50.0),
             child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment:
-                        CrossAxisAlignment.center,
-
-                        children: [
-                          Text(
-                            'Friend Request',
-                            style: TextStyle(
-                              fontSize: 22.0,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xFF616161),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        color: Color(0xFF757575),
-                        size: 25.0,
-                      ),
-                    ],
+              children: [
+                Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                  Text(
+                    'Abdur Aziz',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF616161),
+                    ),
+                  ),
+                  SizedBox(width: 50),
+                  IconButton(
+                    icon: Icon(
+                      Icons.check,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {
+                      // do something
+                    },
+                  ),
+                  SizedBox(width: 10),
+                  IconButton(
+                    icon: Icon(
+                      Icons.close_rounded,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {
+                      // do something
+                    },
                   ),
 
-                ]
+                ]),
+                SizedBox(height: 15),
+                Divider(
+                  height: 20,
+                  thickness: 1,
+                  color: Colors.black,
+                ),
+                SizedBox(height: 15),
+
+                Row(
+
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Abdur Aziz',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFF616161),
+                  ),
+                ),
+                SizedBox(width: 50),
+                IconButton(
+                  icon: Icon(
+                    Icons.check,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    // do something
+                  },
+                ),
+                SizedBox(width: 10),
+                IconButton(
+                  icon: Icon(
+                    Icons.close_rounded,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    // do something
+                  },
+                ),
+              ]),
+                SizedBox(height: 15),
+                Divider(
+                  height: 20,
+                  thickness: 1,
+                  color: Colors.black,
+                ),
+                SizedBox(height: 15),
+
+                Row(
+
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Abdur Aziz',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF616161),
+                        ),
+                      ),
+                      SizedBox(width: 50),
+                      IconButton(
+                        icon: Icon(
+                          Icons.check,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {
+                          // do something
+                        },
+                      ),
+                      SizedBox(width: 10),
+                      IconButton(
+                        icon: Icon(
+                          Icons.close_rounded,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {
+                          // do something
+                        },
+                      ),
+                    ]),
+                SizedBox(height: 15),
+                Divider(
+                  height: 20,
+                  thickness: 1,
+                  color: Colors.black,
+                ),
+                SizedBox(height: 15),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      child: ClipOval(
+                          child:
+                          Image.asset('assets/testpfp.jpg')),
+                      radius: 25.0,
+                    ),
+                    Text(
+                      'Abdur Aziz',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF616161),
+                      ),
+                    ),
+                    SizedBox(width: 50),
+                    IconButton(
+                      icon: Icon(
+                        Icons.check,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        // do something
+                      },
+                    ),
+                    SizedBox(width: 10),
+                    IconButton(
+                      icon: Icon(
+                        Icons.close_rounded,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        // do something
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-        )
-
-    );
+        ));
   }
 }
