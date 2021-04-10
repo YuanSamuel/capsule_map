@@ -1,33 +1,20 @@
-import 'package:capsule_map/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-class SignUpScreen extends StatefulWidget {
+class SignInScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  TextEditingController _emailInputController;
-  TextEditingController _usernameInputController;
-  TextEditingController _passwordInputController;
-
-  @override
-  void initState() {
-    _emailInputController = new TextEditingController();
-    _usernameInputController = new TextEditingController();
-    _passwordInputController = new TextEditingController();
-    super.initState();
-  }
-
+class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -35,10 +22,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: [
                 Positioned(
                   left: 70.0,
+                  top: 30.0,
                   child: Container(
-                    padding: EdgeInsets.all(110.0),
+                    padding: EdgeInsets.all(100.0),
                     decoration: BoxDecoration(
-                      color: Colors.teal[300],
+                      color: Colors.grey[300],
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -46,7 +34,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Container(
                     padding: EdgeInsets.all(100.0),
                     decoration: BoxDecoration(
-                      color: Colors.grey[300],
+                      color: Colors.teal[300],
                       shape: BoxShape.circle,
                     ),
                     child: Center(
@@ -61,9 +49,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           ),
                           Text(
-                            ' Up',
+                            ' In',
                             style: TextStyle(
-                              color: Colors.teal[400],
+                              color: Colors.white,
                               fontSize: 20.0,
                               fontWeight: FontWeight.w700,
                             ),
@@ -75,39 +63,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             SizedBox(
               height: height * 0.1,
-            ),
-            Container(
-              width: width * 0.7,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xffF8F8F8),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    height: height * 0.06,
-                    width: width * 0.7,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                        child: TextFormField(
-                          controller: _emailInputController,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Email',
-                            hintStyle: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xffbfbfbf),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
             SizedBox(
               height: height * 0.03,
@@ -128,7 +83,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
                         child: TextFormField(
-                          controller: _usernameInputController,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Username',
@@ -164,7 +118,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
                         child: TextFormField(
-                          controller: _passwordInputController,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Password',
@@ -184,29 +137,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(
               height: height * 0.03,
             ),
-            GestureDetector(
-              onTap: () async {
-                print('sign up');
-                await AuthService().signUp(
-                    _emailInputController.text.trim(),
-                    _passwordInputController.text.trim(),
-                    _usernameInputController.text.trim());
-              },
-              child: Container(
-                height: height * 0.06,
-                width: width * 0.7,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  color: Colors.blue[900],
-                ),
-                child: Center(
-                  child: Text(
-                    'REGISTER',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w500,
-                    ),
+            Container(
+              height: height * 0.06,
+              width: width * 0.7,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5.0),
+                color: Colors.blue[900],
+              ),
+              child: Center(
+                child: Text(
+                  'SIGN IN',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
@@ -216,7 +160,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Already have an account? Login.'),
+                  Text('Need an account? Register.'),
                 ],
               ),
             )

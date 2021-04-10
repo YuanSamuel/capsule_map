@@ -32,6 +32,8 @@ dependencies:
   flutter_mobx: ^2.0.0
   mobx: ^2.0.1
   provider: ^5.0.0
+  image_picker: ^0.7.4
+  audioplayers: ^0.18.3
 
 dev_dependencies:
   flutter_test:
