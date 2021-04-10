@@ -3,10 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 
 class AuthService {
-  auth.FirebaseAuth _firebaseAuth = auth.FirebaseAuth.instance;
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  static auth.FirebaseAuth _firebaseAuth = auth.FirebaseAuth.instance;
+  static FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<String> signUp(String email, String password, String username) async {
+  static Future<String> signUp(String email, String password, String username) async {
     QuerySnapshot users = await _firestore
         .collection('users')
         .where('username', isEqualTo: username)
@@ -33,12 +33,12 @@ class AuthService {
     }
   }
 
-  Future<void> signIn(String email, String password) async {
+  static Future<void> signIn(String email, String password) async {
     await _firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password);
   }
 
-  Future<void> signOut() async {
+  static Future<void> signOut() async {
     await _firebaseAuth.signOut();
   }
 }

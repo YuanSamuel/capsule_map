@@ -12,6 +12,7 @@ abstract class _CapsulesStore with Store {
     if (setUp) {
       List<Capsule> capsules = <Capsule>[];
       capsulesStream.value.docs.forEach((DocumentSnapshot snapshot) {
+        print(snapshot.data());
         capsules.add(Capsule.fromSnapshot(snapshot));
       });
       return capsules;

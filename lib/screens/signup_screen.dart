@@ -187,7 +187,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             GestureDetector(
               onTap: () async {
                 print('sign up');
-                await AuthService().signUp(
+                await AuthService.signUp(
                     _emailInputController.text.trim(),
                     _passwordInputController.text.trim(),
                     _usernameInputController.text.trim());

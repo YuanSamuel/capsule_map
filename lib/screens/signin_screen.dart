@@ -1,3 +1,4 @@
+import 'package:capsule_map/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -8,6 +9,16 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  TextEditingController _emailInputController;
+  TextEditingController _passwordInputController;
+
+  @override
+  void initState() {
+    _emailInputController = new TextEditingController();
+    _passwordInputController = new TextEditingController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -83,9 +94,10 @@ class _SignInScreenState extends State<SignInScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
                         child: TextFormField(
+                          controller: _emailInputController,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'Username',
+                            hintText: 'Email',
                             hintStyle: TextStyle(
                               fontSize: 15.0,
                               fontWeight: FontWeight.w600,
@@ -118,6 +130,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
                         child: TextFormField(
+                          controller: _passwordInputController,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Password',
@@ -137,20 +150,26 @@ class _SignInScreenState extends State<SignInScreen> {
             SizedBox(
               height: height * 0.03,
             ),
-            Container(
-              height: height * 0.06,
-              width: width * 0.7,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Colors.blue[900],
-              ),
-              child: Center(
-                child: Text(
-                  'SIGN IN',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500,
+            GestureDetector(
+              onTap: () {
+                AuthService.signIn(_emailInputController.text.trim(),
+                    _passwordInputController.text.trim());
+              },
+              child: Container(
+                height: height * 0.06,
+                width: width * 0.7,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  color: Colors.blue[900],
+                ),
+                child: Center(
+                  child: Text(
+                    'SIGN IN',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),

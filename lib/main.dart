@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider<MainStore>(
-          create: (_) => MainStore(),
+          create: (_) => MainStore()..setupReactions(),
         ),
       ],
       child: MaterialApp(

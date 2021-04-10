@@ -12,7 +12,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              AuthService().signOut();
+              AuthService.signOut();
             },
             child: Text('Log Out'),
           ),

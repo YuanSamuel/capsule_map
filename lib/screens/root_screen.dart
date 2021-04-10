@@ -1,4 +1,4 @@
-import 'package:capsule_map/screens/capsules_screen.dart';
+import 'package:capsule_map/screens/capsules/capsules_screen.dart';
 import 'package:capsule_map/screens/home_screen.dart';
 import 'package:capsule_map/screens/profile_screen.dart';
 import 'package:capsule_map/screens/signup_screen.dart';
@@ -20,7 +20,6 @@ class _RootScreenState extends State<RootScreen> {
   @override
   Widget build(BuildContext context) {
     MainStore mainStore = Provider.of<MainStore>(context);
-    print(mainStore.currentUser.value);
     return Observer(
         builder: (_) => mainStore.loggedIn
             ? Scaffold(
