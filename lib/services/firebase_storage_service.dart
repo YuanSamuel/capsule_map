@@ -15,7 +15,7 @@ class FirebaseStorageService {
           .child(FirebaseAuth.instance.currentUser.uid)
           .child(now.toString() + ' ' + i.toString())
           .putFile(images[i])
-          .catchError(() => print('error')));
+          .catchError((error) => print(error)));
     }
     List<TaskSnapshot> tasks = await Future.wait(futureUploads);
 
@@ -37,7 +37,7 @@ class FirebaseStorageService {
           .child(FirebaseAuth.instance.currentUser.uid)
           .child(now.toString() + ' ' + i.toString())
           .putFile(images[i])
-          .catchError(() => print('error')));
+          .catchError((error) => print(error)));
     }
     List<TaskSnapshot> tasks = await Future.wait(futureUploads);
 
