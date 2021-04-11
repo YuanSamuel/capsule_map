@@ -23,6 +23,7 @@ class CapsuleWidget extends StatelessWidget {
               children: [
                 Text(
                   capsule.username,
+
                 ),
                 Text(
                   StringHelper.dateToString(capsule.created),
