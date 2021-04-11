@@ -9,7 +9,7 @@ part of 'main_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$MainStore on _MainStore, Store {
-  Computed<bool> _$loggedInComputed;
+  Computed<bool>? _$loggedInComputed;
 
   @override
   bool get loggedIn => (_$loggedInComputed ??=
@@ -94,6 +94,37 @@ mixin _$MainStore on _MainStore, Store {
     });
   }
 
+  final _$friendsStoreAtom = Atom(name: '_MainStore.friendsStore');
+
+  @override
+  FriendsStore get friendsStore {
+    _$friendsStoreAtom.reportRead();
+    return super.friendsStore;
+  }
+
+  @override
+  set friendsStore(FriendsStore value) {
+    _$friendsStoreAtom.reportWrite(value, super.friendsStore, () {
+      super.friendsStore = value;
+    });
+  }
+
+  final _$friendRequestsStoreAtom =
+      Atom(name: '_MainStore.friendRequestsStore');
+
+  @override
+  FriendRequestsStore get friendRequestsStore {
+    _$friendRequestsStoreAtom.reportRead();
+    return super.friendRequestsStore;
+  }
+
+  @override
+  set friendRequestsStore(FriendRequestsStore value) {
+    _$friendRequestsStoreAtom.reportWrite(value, super.friendRequestsStore, () {
+      super.friendRequestsStore = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
@@ -102,6 +133,8 @@ userStore: ${userStore},
 capsulesStore: ${capsulesStore},
 friendCapsulesStore: ${friendCapsulesStore},
 friendCapsulesOpenedStore: ${friendCapsulesOpenedStore},
+friendsStore: ${friendsStore},
+friendRequestsStore: ${friendRequestsStore},
 loggedIn: ${loggedIn}
     ''';
   }
