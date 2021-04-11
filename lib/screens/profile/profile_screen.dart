@@ -23,6 +23,9 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                SizedBox(
+                  height: height * 0.04,
+                ),
                 Container(
                   child: Center(
                     child: Text(
@@ -31,20 +34,41 @@ class ProfileScreen extends StatelessWidget {
                         color: Colors.blue[900],
                         fontFamily: 'Open_Sans',
                         fontSize: 40.0,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ),
                 ),
+                Divider(
+                  height: 5.0,
+                  thickness: 2.0,
+                  color: Colors.blue[100],
+                  indent: 100.0,
+                  endIndent: 100.0,
+                ),
+                SizedBox(
+                  height: height * 0.03,
+                ),
                 Container(
-                  padding: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 10,
+                        color: Colors.black.withOpacity(0.3),
+                        spreadRadius: 5,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
+                  ),
                   child: CircleAvatar(
-                    radius: 100.0,
+                    radius: 90.0,
                     backgroundImage: AssetImage('images/dog.png'),
                   ),
                 ),
                 SizedBox(
-                  height: height * 0.01,
+                  height: height * 0.04,
                 ),
                 Container(
                   child: Center(
@@ -148,6 +172,7 @@ class ProfileScreen extends StatelessWidget {
                             style: TextStyle(
                               fontFamily: 'Open_Sans',
                               fontSize: 16.0,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                           Container(
