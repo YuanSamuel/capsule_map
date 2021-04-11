@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:capsule_map/models/Capsule.dart';
 import 'package:capsule_map/stores/positionStore/position_store.dart';
 import 'package:capsule_map/utils/LocationHelper.dart';
