@@ -27,33 +27,33 @@ class CapsuleWidget extends StatelessWidget {
                     color: Colors.white),
                 child: Column(
                   children: [
-                  SizedBox(
-                  height: 20.0,),
-                    Text(capsule.title,style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22.0,)),
-                SizedBox(
-                  height: 3.0,),
-                    Text(capsule.username +
-                        ' - ' +
-                        StringHelper.dateToString(capsule.created), style: TextStyle(
-                        fontStyle: FontStyle.italic)),
-                    Divider(
-                      height:25
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(left: 30.0, right:30),
-                      child:
-                    Text(capsule.description, style: TextStyle(
-                      fontSize: 16.0,
-                        height: 1.5)),),
                     SizedBox(
-                      height: 4.0,),
-
-
+                      height: 20.0,
+                    ),
+                    Text(capsule.title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22.0,
+                        )),
+                    SizedBox(
+                      height: 3.0,
+                    ),
+                    Text(
+                        capsule.username +
+                            ' - ' +
+                            StringHelper.dateToString(capsule.created),
+                        style: TextStyle(fontStyle: FontStyle.italic)),
+                    Divider(height: 25),
+                    Container(
+                      padding: EdgeInsets.only(left: 30.0, right: 30),
+                      child: Text(capsule.description,
+                          style: TextStyle(fontSize: 16.0, height: 1.5)),
+                    ),
+                    SizedBox(
+                      height: 4.0,
+                    ),
                   ],
                 ),
-
               ),
             );
           },
@@ -102,7 +102,7 @@ class CapsuleWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    'Address Goes Here',
+                    '(' + capsule.location.latitude.toStringAsFixed(4) + ', ' + capsule.location.longitude.toStringAsFixed(4) + ')',
                     textAlign: TextAlign.end,
                   ),
                 ],
