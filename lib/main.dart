@@ -1,4 +1,6 @@
 import 'package:capsule_map/screens/root_screen.dart';
+import 'package:capsule_map/screens/signin_screen.dart';
+import 'package:capsule_map/screens/welcome_screen.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:capsule_map/stores/positionStore/position_store.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: RootScreen(),
+        home: SignInScreen(),
       ),
     );
   }

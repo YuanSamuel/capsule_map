@@ -28,6 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
               height: 40.0,
@@ -46,7 +47,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 Positioned(
                   left: 70.0,
                   child: Container(
-                    padding: EdgeInsets.all(100.0),
+                    padding: EdgeInsets.all(110.0),
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
                       shape: BoxShape.circle,
