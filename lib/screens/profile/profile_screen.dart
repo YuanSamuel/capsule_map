@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:capsule_map/models/Capsule.dart';
 import 'package:capsule_map/screens/profile/addfriends_screen.dart';
 import 'package:capsule_map/screens/profile/friendrequest_screen.dart';
 import 'package:capsule_map/screens/profile/myfriends_screen.dart';
@@ -8,6 +10,7 @@ import 'package:capsule_map/services/auth_service.dart';
 import 'package:capsule_map/services/database_service.dart';
 import 'package:capsule_map/services/firebase_storage_service.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,9 +25,26 @@ class ProfileScreen extends StatelessWidget {
 
     MainStore mainStore = Provider.of<MainStore>(context);
 
+    // for (int i = 0; i < 2; i++) {
+    //   Capsule newCapsule = Capsule(
+    //     title: 'Check out these leaves!',
+    //     description:
+    //         'Was on a trek today, noticed that the trees over here all have suuuper pretty leaves. You can see them in the photo I posted; hope they\'re still around when you get here!',
+    //     location: GeoPoint(
+    //         29.75761342329656 + Random().nextDouble() * 0.02 - 0.01,
+    //         -95.79107802832739 + Random().nextDouble() * 0.02 - 0.01),
+    //     videoUrls: [],
+    //     imageUrls: [
+    //       'https://firebasestorage.googleapis.com/v0/b/capsulemap-42589.appspot.com/o/capsuleImages%2FcPSrxBOMxpY5ABjPV3Woy1fzV6v1%2Fmagnolia-trees-556718_1280.jpg?alt=media&token=9e39ce42-2f51-47a1-bbe3-695a8a4886e1',
+    //       'https://firebasestorage.googleapis.com/v0/b/capsulemap-42589.appspot.com/o/capsuleImages%2FcPSrxBOMxpY5ABjPV3Woy1fzV6v1%2Ftree-99852_1280(1).jpg?alt=media&token=168b9565-9c9f-49e7-83c4-20bacab9a3f6'
+    //     ],
+    //   );
+    //   DatabaseService.createCapsule(newCapsule, context);
+    // }
+
     return Observer(
       builder: (_) => Scaffold(
-        backgroundColor: Colors.white,//Colors.white,
+        backgroundColor: Colors.white, //Colors.white,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(

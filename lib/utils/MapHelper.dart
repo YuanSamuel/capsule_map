@@ -39,6 +39,7 @@ class MapHelper {
                   isScrollControlled: true,
                   builder: (BuildContext context) {
                     return Container(
+                      color: Colors.transparent,
                       height: height * 0.7,
                       child: SingleChildScrollView(
                         child: Container(
