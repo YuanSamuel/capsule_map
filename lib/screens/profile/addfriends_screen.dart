@@ -23,7 +23,7 @@ class _AddFriendsScreenState extends State<AddFriendsScreen> {
               color: Colors.black,
             ),
             onPressed: () {
-              // do something
+              Navigator.pop(context);
             },
           ),
           title: Text(
@@ -35,38 +35,35 @@ class _AddFriendsScreenState extends State<AddFriendsScreen> {
           centerTitle: true,
         ),
         body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 150.0, vertical: 50.0),
-            child: Column(
-              children: [Container(
-                decoration: BoxDecoration(
+            child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+          child: Column(children: [
+            Container(
+              decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all()
-                ),
-                height: height * 0.07,
-                width: width * 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: TextFormField(
-                      controller: _emailInputController,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Username',
-                        hintStyle: TextStyle(
-
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey,
-                        ),
+                  border: Border.all()),
+              height: height * 0.07,
+              width: width * 1,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: TextFormField(
+                    controller: _emailInputController,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Username',
+                      hintStyle: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey,
                       ),
                     ),
                   ),
                 ),
               ),
-           ]
-          ),
+            ),
+          ]),
         )));
   }
 }
