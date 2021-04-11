@@ -1,6 +1,4 @@
 import 'package:capsule_map/models/Capsule.dart';
-import 'package:capsule_map/services/database_service.dart';
-import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:capsule_map/stores/positionStore/position_store.dart';
 import 'package:capsule_map/utils/LocationHelper.dart';
 import 'package:capsule_map/utils/StringHelper.dart';
@@ -9,7 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class MapHelper {
-  static Set<Marker> getMarkers(BuildContext context, List<Capsule> capsules) {
+  static Set<Marker> getMarkers(BuildContext context, List<Capsule> capsules, BitmapDescriptor currentLocationDot) {
     PositionStore positionStore =
         Provider.of<PositionStore>(context, listen: false);
 
@@ -88,7 +86,7 @@ class MapHelper {
 
       markers.add(Marker(
         markerId: MarkerId('Current Location'),
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
+        icon: currentLocationDot,
         position: LatLng(currentLat, currentLong),
       ));
 
