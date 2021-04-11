@@ -17,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
 
     return Observer(
       builder: (_) => Scaffold(
-        backgroundColor: Colors.blue[50],
+        backgroundColor: Colors.lightBlue[50],
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(

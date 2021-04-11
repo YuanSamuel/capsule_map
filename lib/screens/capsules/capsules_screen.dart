@@ -10,22 +10,21 @@ class CapsulesScreen extends StatelessWidget {
       child: Scaffold(
           appBar: AppBar(
             title: Text('Capsules',
-            style: TextStyle(
-        color: Colors.lightBlue[900],
-
-            )),
-            backgroundColor: Colors.white,
+                style: TextStyle(
+                  color: Colors.lightBlue[900],
+                )),
+            backgroundColor: Colors.blueGrey[100],
             bottom: TabBar(
               tabs: [
                 Tab(
                   child: Text('Opened',
-                style: TextStyle(
-                    color: Colors.lightBlue[900], ) ),
+                      style: TextStyle(
+                        color: Colors.lightBlue[900],
+                      )),
                 ),
                 Tab(
                   child: Text('Sent',
-                      style: TextStyle(
-                          color: Colors.lightBlue[900])),
+                      style: TextStyle(color: Colors.lightBlue[900])),
                 ),
               ],
             ),

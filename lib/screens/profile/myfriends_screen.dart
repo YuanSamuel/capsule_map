@@ -23,7 +23,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
       builder: (_) => Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.blueGrey[100],
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios_rounded,
@@ -36,7 +36,7 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
             title: Text(
               'My Friends',
               style: TextStyle(
-                color: Colors.blueAccent,
+                color: Colors.lightBlue[900],
               ),
             ),
             centerTitle: true,
@@ -45,7 +45,9 @@ class _MyFriendsScreenState extends State<MyFriendsScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
               child: ListView.builder(
-                itemCount: mainStore.friendsStore.friends != null ? mainStore.friendsStore.friends.length : 0,
+                itemCount: mainStore.friendsStore.friends != null
+                    ? mainStore.friendsStore.friends.length
+                    : 0,
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: [

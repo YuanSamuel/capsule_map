@@ -1,3 +1,4 @@
+import 'package:capsule_map/models/Capsule.dart';
 import 'package:capsule_map/models/User.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -70,5 +71,16 @@ class DatabaseService {
     } catch (error) {
       print(error);
     }
+  }
+
+  static Future<void> openCapsule(Capsule capsule, BuildContext context) async {
+    MainStore mainStore = Provider.of<MainStore>(context, listen: false);
+
+    User currentUser = mainStore.userStore.user;
+    currentUser.friendCapsules
+        .removeWhere((String capsuleId) => capsuleId == capsule.reference.id);
+
+    currentUser.friendCapsulesOpened.add(capsule.reference.id);
+    await currentUser.reference.update(currentUser.toJson());
   }
 }
