@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:capsule_map/screens/createcapsule_screen.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:capsule_map/stores/positionStore/position_store.dart';
 import 'package:capsule_map/utils/MapHelper.dart';
@@ -38,34 +39,59 @@ class _HomeScreenState extends State<HomeScreen> {
             return positionStore.positionStream != null &&
                     positionStore.positionStream.value != null
                 ? Scaffold(
-                    body: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.0),
-                      topRight: Radius.circular(20.0),
+                    floatingActionButton: FloatingActionButton(
+                      child: Icon(Icons.add),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CreateCapsuleScreen()),
+                        );
+                      },
                     ),
-                    child: Theme(
-                      data: ThemeData(
-                        canvasColor: Colors.transparent,
-                      ),
-                      child: GoogleMap(
-                        mapType: MapType.normal,
-                        initialCameraPosition: CameraPosition(
-                          target: LatLng(
-                            positionStore.positionStream.value.latitude,
-                            positionStore.positionStream.value.longitude,
-                          ),
-                          zoom: 12.0,
+                    backgroundColor: Colors.blueGrey[100],
+                    appBar: AppBar(
+                      title: Text(
+                        'Home',
+                        style: TextStyle(
+                          color: Colors.lightBlue[900],
                         ),
-                        onMapCreated: (GoogleMapController controller) {
-                          _controller.complete(controller);
-                        },
-                        markers: MapHelper.getMarkers(
-                            context,
-                            mainStore.friendCapsulesStore.friendCapsules ?? [],
-                            snapshot.data),
                       ),
+                      backgroundColor: Colors.blueGrey[100],
+                      elevation: 0,
                     ),
-                  ))
+                    body: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30.0),
+                        topRight: Radius.circular(30.0),
+                      ),
+                      child: Theme(
+                        data: ThemeData(
+                          canvasColor: Colors.transparent,
+                        ),
+                        child: GoogleMap(
+                          mapType: MapType.normal,
+                          initialCameraPosition: CameraPosition(
+                            target: LatLng(
+                              positionStore.positionStream.value.latitude,
+                              positionStore.positionStream.value.longitude,
+                            ),
+                            zoom: 14.0,
+                          ),
+                          zoomControlsEnabled: false,
+                          mapToolbarEnabled: false,
+                          myLocationButtonEnabled: false,
+                          onMapCreated: (GoogleMapController controller) {
+                            _controller.complete(controller);
+                          },
+                          markers: MapHelper.getMarkers(
+                              context,
+                              mainStore.friendCapsulesStore.friendCapsules ??
+                                  [],
+                              snapshot.data),
+                        ),
+                      ),
+                    ))
                 : Center(
                     child: CircularProgressIndicator(),
                   );
