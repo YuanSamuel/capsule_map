@@ -1,5 +1,6 @@
 import 'package:capsule_map/screens/createcapsule_screen.dart';
 import 'package:capsule_map/screens/profile/addfriends_screen.dart';
+import 'package:capsule_map/screens/profile/profile_screen.dart';
 import 'package:capsule_map/screens/root_screen.dart';
 import 'package:capsule_map/screens/signin_screen.dart';
 import 'package:capsule_map/screens/welcome_screen.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: RootScreen(),
+        home: ProfileScreen(),
       ),
     );
   }
