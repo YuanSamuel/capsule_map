@@ -36,6 +36,7 @@ dependencies:
   audioplayers: ^0.18.3
   geolocator: ^7.0.1
   google_maps_flutter: ^2.0.3
+  video_player: ^2.1.1
 
 dev_dependencies:
   flutter_test:
