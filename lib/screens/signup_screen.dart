@@ -2,6 +2,7 @@ import 'package:capsule_map/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'dart:math';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -226,9 +227,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-            SizedBox(
-                height: 20.0
-            ),
+            SizedBox(height: 20.0),
             // Container(
             //   width: width * 0.7,
             //   child: Row(

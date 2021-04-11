@@ -3,6 +3,7 @@ import 'package:capsule_map/screens/profile/addfriends_screen.dart';
 import 'package:capsule_map/screens/profile/profile_screen.dart';
 import 'package:capsule_map/screens/root_screen.dart';
 import 'package:capsule_map/screens/signin_screen.dart';
+import 'package:capsule_map/screens/signup_screen.dart';
 import 'package:capsule_map/screens/welcome_screen.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:capsule_map/stores/positionStore/position_store.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: ProfileScreen(),
+        home: SignUpScreen(),
       ),
     );
   }
