@@ -49,13 +49,17 @@ class CapsuleWidget extends StatelessWidget {
                         height: 1.5)),),
                     SizedBox(
                       height: 4.0,),
+Container(
+  padding: EdgeInsets.all(10.0),
+      child:Image.asset('images/tree.jpg' ,scale:1.3)),
+   ]
+  )
+)
 
 
-                  ],
-                ),
+                );
 
-              ),
-            );
+
           },
         );
       },
