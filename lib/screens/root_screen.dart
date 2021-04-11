@@ -40,7 +40,7 @@ class _RootScreenState extends State<RootScreen> {
                   icon: Icon(Icons.person_outline), label: 'Profile'),
             ],
           ),
-          body: screens[_currentIndex],
+          body: IndexedStack(index: _currentIndex, children: screens),
         );
       } else {
         _currentIndex = 0;

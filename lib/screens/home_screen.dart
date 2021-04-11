@@ -22,18 +22,24 @@ class _HomeScreenState extends State<HomeScreen> {
       return positionStore.positionStream != null &&
               positionStore.positionStream.value != null
           ? Scaffold(
-              body: GoogleMap(
-              mapType: MapType.normal,
-              initialCameraPosition: CameraPosition(
-                target: LatLng(
-                  positionStore.positionStream.value.latitude,
-                  positionStore.positionStream.value.longitude,
-                ),
-                zoom: 12.0,
+              body: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0),
               ),
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
+              child: GoogleMap(
+                mapType: MapType.normal,
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(
+                    positionStore.positionStream.value.latitude,
+                    positionStore.positionStream.value.longitude,
+                  ),
+                  zoom: 12.0,
+                ),
+                onMapCreated: (GoogleMapController controller) {
+                  _controller.complete(controller);
+                },
+              ),
             ))
           : Center(
               child: CircularProgressIndicator(),
