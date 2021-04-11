@@ -19,7 +19,11 @@ class SentCapsulesList extends StatelessWidget {
           return Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-            child: CapsuleWidget(capsule: capsules[index]),
+            child: Theme(
+                data: ThemeData(
+                  canvasColor: Colors.transparent,
+                ),
+                child: CapsuleWidget(capsule: capsules[index])),
           );
         },
       );
