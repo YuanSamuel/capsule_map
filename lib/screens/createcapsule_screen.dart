@@ -18,25 +18,35 @@ class _CreateCapsuleScreenState extends State<CreateCapsuleScreen> {
             height: height * 0.03,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 40.0, top: 40.0),
+            padding: EdgeInsets.only(left: 20.0),
             child: Column(
               children: [
-                SizedBox(
-                  height: height * 0.01,
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Create a Capsule',
-                      style: TextStyle(
-                        fontFamily: 'Open_Sans',
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w400,
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          child: IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(Icons.arrow_back_ios_rounded),
+                          ),
+                        ),
+                        Text(
+                          'Create a Capsule',
+                          style: TextStyle(
+                            fontFamily: 'Open_Sans',
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: EdgeInsets.only(right: 20.0, top: 50.0),
                       child: CircleAvatar(
                         radius: 25.0,
                         backgroundImage: AssetImage('images/dog.png'),
@@ -133,7 +143,7 @@ class _CreateCapsuleScreenState extends State<CreateCapsuleScreen> {
                     ),
                     // ______________________________________
                     SizedBox(
-                      height: height * 0.06,
+                      height: height * 0.05,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 22.0),
@@ -361,6 +371,33 @@ class _CreateCapsuleScreenState extends State<CreateCapsuleScreen> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: height * 0.04,
+                    ),
+                    Container(
+                      height: height * 0.06,
+                      width: width * 0.6,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0),
+                          color: Colors.blue[900],
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: Offset(0, 2),
+                              blurRadius: 4.0,
+                            ),
+                          ]),
+                      child: Center(
+                        child: Text(
+                          'Done',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
                     ),
                   ],

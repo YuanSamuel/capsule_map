@@ -24,7 +24,7 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
       builder: (_) => Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.blueGrey[100],
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios_rounded,
@@ -37,7 +37,7 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
             title: Text(
               'Friend Request',
               style: TextStyle(
-                color: Colors.blueAccent,
+                color: Colors.lightBlue[900],
               ),
             ),
             centerTitle: true,
