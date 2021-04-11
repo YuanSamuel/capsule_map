@@ -22,7 +22,9 @@ class _RootScreenState extends State<RootScreen> {
   Widget build(BuildContext context) {
     MainStore mainStore = Provider.of<MainStore>(context);
     return Observer(builder: (_) {
-      if (mainStore.loggedIn) {
+      if (mainStore.loggedIn &&
+          mainStore.userStore.userStream != null &&
+          mainStore.userStore.userStream.value != null) {
         return Scaffold(
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: _currentIndex,

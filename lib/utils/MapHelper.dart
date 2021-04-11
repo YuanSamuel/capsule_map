@@ -1,4 +1,5 @@
 import 'package:capsule_map/models/Capsule.dart';
+import 'package:capsule_map/services/database_service.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:capsule_map/stores/positionStore/position_store.dart';
 import 'package:capsule_map/utils/LocationHelper.dart';
@@ -8,8 +9,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 class MapHelper {
-  static Set<Marker> getMarkers(BuildContext context) {
-    MainStore mainStore = Provider.of<MainStore>(context, listen: false);
+  static Set<Marker> getMarkers(BuildContext context, List<Capsule> capsules) {
     PositionStore positionStore =
         Provider.of<PositionStore>(context, listen: false);
 
@@ -17,8 +17,6 @@ class MapHelper {
 
     if (positionStore.positionStream != null &&
         positionStore.positionStream.value != null) {
-      List<Capsule> capsules = mainStore.friendCapsulesStore.friendCapsules;
-
       List<Marker> markers = <Marker>[];
 
       double currentLat = positionStore.positionStream.value.latitude;
@@ -36,27 +34,34 @@ class MapHelper {
               onTap: () async {
                 await showModalBottomSheet(
                   context: context,
+                  isScrollControlled: true,
                   builder: (BuildContext context) {
                     return Container(
                       height: height * 0.7,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20.0),
-                          topRight: Radius.circular(20.0),
+                      color: Colors.transparent,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20.0),
+                            topRight: Radius.circular(20.0),
+                          ),
+                          color: Colors.white
                         ),
-                      ),
-                      child: Column(
-                        children: [
-                          Text(capsule.title),
-                          Text(capsule.username +
-                              ' - ' +
-                              StringHelper.dateToString(capsule.created)),
-                          Text(capsule.description),
-                        ],
+                        child: Column(
+                          children: [
+                            Text(capsule.title),
+                            Text(capsule.username +
+                                ' - ' +
+                                StringHelper.dateToString(capsule.created)),
+                            Text(capsule.description),
+                          ],
+                        ),
                       ),
                     );
                   },
                 );
+                //TODO: Uncomment this for the marker to go away after exiting
+                //DatabaseService.openCapsule(capsule, context);
               },
               position:
                   LatLng(capsule.location.latitude, capsule.location.longitude),
@@ -80,6 +85,16 @@ class MapHelper {
           );
         }
       });
+
+      markers.add(Marker(
+        markerId: MarkerId('Current Location'),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
+        position: LatLng(currentLat, currentLong),
+      ));
+
+      return markers.toSet();
     }
+
+    return new Set();
   }
 }
