@@ -2,6 +2,7 @@ import 'package:capsule_map/models/Capsule.dart';
 import 'package:capsule_map/models/User.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,28 @@ class DatabaseService {
 
       await currentUser.reference.update(currentUser.toJson());
       await friend.reference.update(friend.toJson());
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  static Future<void> sendFriendRequest(
+      String username, BuildContext context) async {
+    try {
+      QuerySnapshot snapshot = await _firestore
+          .collection('users')
+          .where('username', isEqualTo: username)
+          .get();
+      if (snapshot.size > 0) {
+        for (int i = 0; i < snapshot.size; i++) {
+          MainStore mainStore = Provider.of<MainStore>(context, listen: false);
+
+          auth.User currentUser = mainStore.currentUser.value;
+          await snapshot.docs[i].reference.update({
+            'friendRequests': FieldValue.arrayUnion([currentUser.uid])
+          });
+        }
+      }
     } catch (error) {
       print(error);
     }
