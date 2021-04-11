@@ -83,4 +83,33 @@ class DatabaseService {
     currentUser.friendCapsulesOpened.add(capsule.reference.id);
     await currentUser.reference.update(currentUser.toJson());
   }
+
+  static Future<String> createCapsule(
+      Capsule capsule, BuildContext context) async {
+    MainStore mainStore = Provider.of<MainStore>(context, listen: false);
+
+    User currentUser = mainStore.userStore.user;
+
+    capsule.username = currentUser.username;
+
+    DocumentReference addedCapsule =
+        await _firestore.collection('capsules').add(capsule.toJson());
+
+    currentUser.capsules.add(addedCapsule.id);
+    await currentUser.reference.update(currentUser.toJson());
+
+    return addedCapsule.id;
+  }
+
+  static Future<void> shareCapsule(
+      String capsuleId, List<String> friendIds) async {
+    List<Future<void>> updateDocumentFutures = <Future<void>>[];
+    for (int i = 0; i < friendIds.length; i++) {
+      updateDocumentFutures
+          .add(_firestore.collection('users').doc(friendIds[i]).update({
+        'friendCapsules': FieldValue.arrayUnion([capsuleId]),
+      }));
+    }
+    await Future.wait(updateDocumentFutures);
+  }
 }

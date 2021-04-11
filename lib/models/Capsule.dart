@@ -16,6 +16,8 @@ class Capsule {
       this.title,
       this.description,
       this.location,
+      this.imageUrls,
+      this.videoUrls,
       this.created});
 
   factory Capsule.fromSnapshot(DocumentSnapshot snapshot) {
@@ -25,11 +27,25 @@ class Capsule {
   }
 
   factory Capsule.fromJson(Map<String, dynamic> json) {
+    List allImageUrls = json['imageUrls'];
+    List<String> imageUrlsConverted = <String>[];
+    allImageUrls.forEach((url) {
+      imageUrlsConverted.add(url as String);
+    });
+
+    List allVideoUrls = json['videoUrls'];
+    List<String> videoUrlsConverted = <String>[];
+    allVideoUrls.forEach((url) {
+      videoUrlsConverted.add(url as String);
+    });
+
     return Capsule(
       username: json['username'],
       title: json['title'],
       description: json['description'],
       location: json['location'] as GeoPoint,
+      imageUrls: imageUrlsConverted,
+      videoUrls: videoUrlsConverted,
       created: (json['created'] as Timestamp).toDate(),
     );
   }
@@ -41,6 +57,8 @@ class Capsule {
         'title': instance.title,
         'description': instance.description,
         'location': instance.location,
+        'imageUrls': instance.imageUrls,
+        'videoUrls': instance.videoUrls,
         'created': DateTime.now(),
       };
 }
