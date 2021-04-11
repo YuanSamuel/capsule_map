@@ -23,6 +23,11 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    print(_controller.value.aspectRatio);
+
     return _controller.value.isInitialized
         ? GestureDetector(
             onTap: () {
@@ -32,8 +37,9 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                     : _controller.play();
               });
             },
-            child: AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
+            child: Container(
+              height: height * 0.4,
+              width: height * 0.4 * _controller.value.aspectRatio,
               child: VideoPlayer(_controller),
             ),
           )

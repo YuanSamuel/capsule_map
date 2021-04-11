@@ -404,43 +404,46 @@ class _CreateCapsuleScreenState extends State<CreateCapsuleScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: () async {
-                                    ImageSource imageSource = await showDialog<
-                                            ImageSource>(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return Container(
-                                            height: height * 0.4,
-                                            width: width * 0.8,
-                                            child: SimpleDialog(
-                                              title: Text('Choose an Image'),
-                                              children: [
-                                                ListTile(
-                                                  leading: Icon(Icons
-                                                      .camera_alt_outlined),
-                                                  title: Text('Camera'),
-                                                  onTap: () {
-                                                    Navigator.pop(context,
-                                                        ImageSource.camera);
-                                                  },
+                                    ImageSource imageSource =
+                                        await showDialog<ImageSource>(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return Container(
+                                                height: height * 0.4,
+                                                width: width * 0.8,
+                                                child: SimpleDialog(
+                                                  title: Text('Choose a Video'),
+                                                  children: [
+                                                    ListTile(
+                                                      leading: Icon(Icons
+                                                          .camera_alt_outlined),
+                                                      title: Text('Camera'),
+                                                      onTap: () {
+                                                        Navigator.pop(context,
+                                                            ImageSource.camera);
+                                                      },
+                                                    ),
+                                                    ListTile(
+                                                      leading:
+                                                          Icon(Icons.photo),
+                                                      title: Text('Gallery'),
+                                                      onTap: () {
+                                                        Navigator.pop(
+                                                            context,
+                                                            ImageSource
+                                                                .gallery);
+                                                      },
+                                                    ),
+                                                  ],
                                                 ),
-                                                ListTile(
-                                                  leading: Icon(Icons.photo),
-                                                  title: Text('Gallery'),
-                                                  onTap: () {
-                                                    Navigator.pop(context,
-                                                        ImageSource.gallery);
-                                                  },
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        });
+                                              );
+                                            });
                                     if (imageSource != null) {
-                                      PickedFile image = await ImagePicker()
+                                      PickedFile video = await ImagePicker()
                                           .getVideo(source: imageSource);
-                                      if (image != null) {
+                                      if (video != null) {
                                         setState(() {
-                                          _images.add(File(image.path));
+                                          _videos.add(File(video.path));
                                         });
                                       }
                                     }
