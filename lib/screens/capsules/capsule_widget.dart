@@ -10,11 +10,11 @@ class CapsuleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFB9CBD9),
+        color: Colors.teal[100],
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,14 +23,21 @@ class CapsuleWidget extends StatelessWidget {
               children: [
                 Text(
                   capsule.username,
+                    style: TextStyle(fontWeight: FontWeight.bold,
+                      fontSize: 18.0,)
+
+
                 ),
                 Text(
-                  StringHelper.dateToString(capsule.created),
+                  StringHelper.dateToString(capsule.created,
+                  ),
+                    style: TextStyle(fontStyle: FontStyle.italic,
+                    fontSize: 15.0,
                 ),
-              ],
+                )],
             ),
             SizedBox(
-              height: 5.0,
+              height: 8.0,
             ),
             Text(
               capsule.description,
