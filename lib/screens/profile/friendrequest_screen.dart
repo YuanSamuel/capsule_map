@@ -35,7 +35,7 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
               },
             ),
             title: Text(
-              'Friend Request',
+              'Friend Requests',
               style: TextStyle(
                 color: Colors.lightBlue[900],
               ),

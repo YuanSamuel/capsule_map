@@ -38,6 +38,9 @@ class _AddFriendsScreenState extends State<AddFriendsScreen> {
             child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
           child: Column(children: [
+            SizedBox(
+              height: height * 0.03,
+            ),
             Container(
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -59,6 +62,41 @@ class _AddFriendsScreenState extends State<AddFriendsScreen> {
                         color: Colors.grey,
                       ),
                     ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: height * 0.09,
+            ),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Image.asset('images/friendship.png'),
+            ),
+            SizedBox(
+              height: height * 0.13,
+            ),
+            Container(
+              height: height * 0.06,
+              width: width * 0.6,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5.0),
+                color: Colors.blue[900],
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    offset: Offset(0, 2),
+                    blurRadius: 4.0,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Text(
+                  'Done',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
