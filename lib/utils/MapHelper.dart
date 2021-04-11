@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:capsule_map/models/Capsule.dart';
 import 'package:capsule_map/screens/video_player_widget.dart';
+import 'package:capsule_map/services/database_service.dart';
 import 'package:capsule_map/stores/positionStore/position_store.dart';
 import 'package:capsule_map/utils/LocationHelper.dart';
 import 'package:capsule_map/utils/StringHelper.dart';
@@ -106,8 +107,7 @@ class MapHelper {
                     );
                   },
                 );
-                //TODO: Uncomment this for the marker to go away after exiting
-                //DatabaseService.openCapsule(capsule, context);
+                DatabaseService.openCapsule(capsule, context);
               },
               position:
                   LatLng(capsule.location.latitude, capsule.location.longitude),
