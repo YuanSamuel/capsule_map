@@ -135,4 +135,13 @@ class DatabaseService {
     }
     await Future.wait(updateDocumentFutures);
   }
+
+  static Future<void> updateProfileUrl(String url, BuildContext context) async {
+    MainStore mainStore = Provider.of<MainStore>(context, listen: false);
+
+    User currentUser = mainStore.userStore.user;
+
+    currentUser.profileUrl = url;
+    currentUser.reference.set(currentUser.toJson());
+  }
 }

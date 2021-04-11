@@ -24,11 +24,11 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
       builder: (_) => Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-            backgroundColor: Colors.blueGrey[100],
+            backgroundColor: Colors.white,
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios_rounded,
-                color: Colors.black,
+                color: Color(0xFF030D56),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -37,7 +37,7 @@ class _FriendRequestScreenState extends State<FriendRequestScreen> {
             title: Text(
               'Friend Requests',
               style: TextStyle(
-                color: Colors.lightBlue[900],
+                color: Color(0xFF030D56),
               ),
             ),
             centerTitle: true,

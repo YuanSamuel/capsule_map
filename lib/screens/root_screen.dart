@@ -33,13 +33,23 @@ class _RootScreenState extends State<RootScreen> {
                 _currentIndex = index;
               });
             },
+            selectedItemColor: Color(0xFF2565CD),
+            selectedLabelStyle: TextStyle(
+              color: Color(0xFF2565CD),
+            ),
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined), label: 'Home'),
+                icon: Icon(Icons.home_outlined),
+                label: 'Home',
+              ),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.list_outlined), label: 'Capsules'),
+                icon: Icon(Icons.list_outlined),
+                label: 'Capsules',
+              ),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.person_outline), label: 'Profile'),
+                icon: Icon(Icons.person_outline),
+                label: 'Profile',
+              ),
             ],
           ),
           body: IndexedStack(index: _currentIndex, children: screens),

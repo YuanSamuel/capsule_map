@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 
 class CapsuleWidget extends StatelessWidget {
   final Capsule capsule;
-  CapsuleWidget({Key key, this.capsule}) : super(key: key);
+  final Color color;
+  CapsuleWidget({Key key, this.capsule, this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,8 @@ class CapsuleWidget extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
-                            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 20.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15.0),
                               child: CachedNetworkImage(
@@ -98,8 +100,15 @@ class CapsuleWidget extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.teal[100],
+          color: color,
           borderRadius: BorderRadius.circular(10.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              offset: Offset(0, 1),
+              blurRadius: 4.0,
+            ),
+          ],
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
@@ -126,14 +135,14 @@ class CapsuleWidget extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 8.0,
+                height: 15.0,
               ),
               Text(
                 capsule.description,
                 textAlign: TextAlign.start,
               ),
               SizedBox(
-                height: 5.0,
+                height: 15.0,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

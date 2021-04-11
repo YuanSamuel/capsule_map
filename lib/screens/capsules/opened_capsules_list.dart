@@ -25,7 +25,7 @@ class OpenedCapsulesList extends StatelessWidget {
                   data: ThemeData(
                     canvasColor: Colors.transparent,
                   ),
-                  child: CapsuleWidget(capsule: capsules[index])),
+                  child: CapsuleWidget(capsule: capsules[index], color: Color(0xFFACEBFF),)),
             );
           },
         );

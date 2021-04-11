@@ -9,26 +9,32 @@ class CapsulesScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
           appBar: AppBar(
-            title: Text('Capsules',
-                style: TextStyle(
-                  color: Colors.lightBlue[900],
-                )),
-            backgroundColor: Colors.blueGrey[100],
+            title: Text(
+              'Capsules',
+              style: TextStyle(
+                color: Color(0xFF030D56),
+              ),
+            ),
+            centerTitle: true,
+            backgroundColor: Colors.white,
             bottom: TabBar(
               tabs: [
                 Tab(
                   child: Text('Opened',
                       style: TextStyle(
-                        color: Colors.lightBlue[900],
+                        color: Color(0xFF030D56),
                       )),
                 ),
                 Tab(
-                  child: Text('Sent',
-                      style: TextStyle(color: Colors.lightBlue[900])),
+                  child:
+                      Text('My Capsules', style: TextStyle(color: Color(0xFF030D56))),
                 ),
               ],
+              indicatorColor: Color(0xFF030D56),
             ),
+            elevation: 1.0,
           ),
+          backgroundColor: Colors.white,
           body: TabBarView(
             children: [
               OpenedCapsulesList(),

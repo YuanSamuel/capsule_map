@@ -1,10 +1,17 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:capsule_map/screens/profile/addfriends_screen.dart';
 import 'package:capsule_map/screens/profile/friendrequest_screen.dart';
 import 'package:capsule_map/screens/profile/myfriends_screen.dart';
 import 'package:capsule_map/services/auth_service.dart';
+import 'package:capsule_map/services/database_service.dart';
+import 'package:capsule_map/services/firebase_storage_service.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -17,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
 
     return Observer(
       builder: (_) => Scaffold(
-        backgroundColor: Colors.lightBlue[50],
+        backgroundColor: Colors.white,//Colors.white,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -31,9 +38,9 @@ class ProfileScreen extends StatelessWidget {
                     child: Text(
                       'Profile',
                       style: TextStyle(
-                        color: Colors.blue[900],
+                        color: Color(0xFF030D56),
                         fontFamily: 'Open_Sans',
-                        fontSize: 40.0,
+                        fontSize: 30.0,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -42,29 +49,75 @@ class ProfileScreen extends StatelessWidget {
                 Divider(
                   height: 5.0,
                   thickness: 2.0,
-                  color: Colors.blue[100],
-                  indent: 100.0,
-                  endIndent: 100.0,
+                  color: Color(0xFF58A2E4),
+                  indent: 120.0,
+                  endIndent: 120.0,
                 ),
                 SizedBox(
                   height: height * 0.03,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 10,
-                        color: Colors.black.withOpacity(0.3),
-                        spreadRadius: 5,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: CircleAvatar(
-                    radius: 90.0,
-                    backgroundImage: AssetImage('images/dog.png'),
+                GestureDetector(
+                  onTap: () async {
+                    ImageSource imageSource = await showDialog<ImageSource>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                            height: height * 0.4,
+                            width: width * 0.8,
+                            child: SimpleDialog(
+                              title: Text('Choose an Image'),
+                              children: [
+                                ListTile(
+                                  leading: Icon(Icons.camera_alt_outlined),
+                                  title: Text('Camera'),
+                                  onTap: () {
+                                    Navigator.pop(context, ImageSource.camera);
+                                  },
+                                ),
+                                ListTile(
+                                  leading: Icon(Icons.photo),
+                                  title: Text('Gallery'),
+                                  onTap: () {
+                                    Navigator.pop(context, ImageSource.gallery);
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        });
+                    if (imageSource != null) {
+                      PickedFile image =
+                          await ImagePicker().getImage(source: imageSource);
+                      if (image != null) {
+                        String url =
+                            await FirebaseStorageService.uploadProfileUrl(
+                                File(image.path));
+                        DatabaseService.updateProfileUrl(url, context);
+                      }
+                    }
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 10,
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 5,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: CircleAvatar(
+                      radius: 90.0,
+                      backgroundImage:
+                          mainStore.userStore.user.profileUrl != null &&
+                                  mainStore.userStore.user.profileUrl.isNotEmpty
+                              ? CachedNetworkImageProvider(
+                                  mainStore.userStore.user.profileUrl)
+                              : AssetImage('images/dog.png'),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -76,7 +129,7 @@ class ProfileScreen extends StatelessWidget {
                       mainStore.userStore.user.username,
                       style: TextStyle(
                         fontFamily: 'Open_Sans',
-                        fontSize: 30.0,
+                        fontSize: 26.0,
                       ),
                     ),
                   ),
@@ -98,7 +151,7 @@ class ProfileScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontFamily: 'Open-Sans',
                                 fontSize: 20.0,
-                                color: Colors.blue[900],
+                                color: Color(0xFF030D56),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -129,7 +182,7 @@ class ProfileScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontFamily: 'Open-Sans',
                                 fontSize: 20.0,
-                                color: Colors.blue[900],
+                                color: Color(0xFF030D56),
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -191,7 +244,7 @@ class ProfileScreen extends StatelessWidget {
                 Divider(
                   height: 30.0,
                   thickness: 1.0,
-                  color: Colors.blue[900],
+                  color: Color(0xFF030D56),
                   indent: 20,
                   endIndent: 20,
                 ),
@@ -233,7 +286,7 @@ class ProfileScreen extends StatelessWidget {
                 Divider(
                   height: 30.0,
                   thickness: 1.0,
-                  color: Colors.blue[900],
+                  color: Color(0xFF030D56),
                   indent: 20,
                   endIndent: 20,
                 ),
@@ -275,7 +328,7 @@ class ProfileScreen extends StatelessWidget {
                 Divider(
                   height: 30.0,
                   thickness: 1.0,
-                  color: Colors.blue[900],
+                  color: Color(0xFF030D56),
                   indent: 20,
                   endIndent: 20,
                 ),

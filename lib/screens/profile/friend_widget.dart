@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:capsule_map/models/User.dart';
 import 'package:capsule_map/services/database_service.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,10 @@ class FriendWidget extends StatelessWidget {
         Row(
           children: [
             CircleAvatar(
-              child: ClipOval(child: Image.asset('images/pfp.jpeg')),
+              backgroundImage:
+                  friend.profileUrl != null && friend.profileUrl.isNotEmpty
+                      ? CachedNetworkImageProvider(friend.profileUrl)
+                      : AssetImage('images/pfp.jpeg'),
               radius: 25.0,
             ),
             SizedBox(width: 10),

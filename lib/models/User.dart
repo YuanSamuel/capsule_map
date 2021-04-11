@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class User {
   String username;
+  String profileUrl;
   List<String> capsules;
   List<String> friends;
   List<String> friendCapsules;
@@ -13,6 +14,7 @@ class User {
   User(
       {this.username,
       this.capsules,
+      this.profileUrl,
       this.friends,
       this.friendCapsules,
       this.friendCapsulesOpened,
@@ -57,6 +59,7 @@ class User {
 
     return User(
       username: json['username'] as String,
+      profileUrl: json['profileUrl'] as String,
       capsules: capsulesConverted,
       friends: friendsConverted,
       friendCapsules: friendCapsulesConverted,
@@ -69,6 +72,7 @@ class User {
 
   Map<String, dynamic> _UserToJson(User instance) => <String, dynamic>{
         'username': instance.username,
+        'profileUrl': instance.profileUrl,
         'capsules': instance.capsules,
         'friends': instance.friends,
         'friendCapsules': instance.friendCapsules,

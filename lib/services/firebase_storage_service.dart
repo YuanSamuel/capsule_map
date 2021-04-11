@@ -50,5 +50,17 @@ class FirebaseStorageService {
     return downloadUrls;
   }
 
+  static Future<String> uploadProfileUrl(File image) async {
+    DateTime now = DateTime.now();
 
+    TaskSnapshot snapshot = await _firebaseStorage
+        .ref('profileImages')
+        .child(FirebaseAuth.instance.currentUser.uid)
+        .child(now.toString())
+        .putFile(image)
+        .catchError((error) => print(error));
+
+    String downloadUrl = await snapshot.ref.getDownloadURL();
+    return downloadUrl;
+  }
 }

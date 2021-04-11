@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     positionStore.positionStream.value != null
                 ? Scaffold(
                     floatingActionButton: FloatingActionButton(
+                      backgroundColor: Color(0xFF2565CD),
                       child: Icon(Icons.add),
                       onPressed: () {
                         Navigator.push(
@@ -49,15 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                     ),
-                    backgroundColor: Colors.blueGrey[100],
+                    backgroundColor: Colors.white,
                     appBar: AppBar(
                       title: Text(
                         'Home',
-                        style: TextStyle(
-                          color: Colors.lightBlue[900],
-                        ),
+                        style:
+                            TextStyle(color: Color(0xFF030D56), fontSize: 22.0),
                       ),
-                      backgroundColor: Colors.blueGrey[100],
+                      centerTitle: true,
+                      backgroundColor: Colors.white,
                       elevation: 0,
                     ),
                     body: ClipRRect(
@@ -65,30 +66,45 @@ class _HomeScreenState extends State<HomeScreen> {
                         topLeft: Radius.circular(30.0),
                         topRight: Radius.circular(30.0),
                       ),
-                      child: Theme(
-                        data: ThemeData(
-                          canvasColor: Colors.transparent,
-                        ),
-                        child: GoogleMap(
-                          mapType: MapType.normal,
-                          initialCameraPosition: CameraPosition(
-                            target: LatLng(
-                              positionStore.positionStream.value.latitude,
-                              positionStore.positionStream.value.longitude,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: Offset(0, -2),
+                              blurRadius: 4.0,
                             ),
-                            zoom: 14.0,
+                          ],
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.0),
+                            topRight: Radius.circular(30.0),
                           ),
-                          zoomControlsEnabled: false,
-                          mapToolbarEnabled: false,
-                          myLocationButtonEnabled: false,
-                          onMapCreated: (GoogleMapController controller) {
-                            _controller.complete(controller);
-                          },
-                          markers: MapHelper.getMarkers(
-                              context,
-                              mainStore.friendCapsulesStore.friendCapsules ??
-                                  [],
-                              snapshot.data),
+                        ),
+                        child: Theme(
+                          data: ThemeData(
+                            canvasColor: Colors.transparent,
+                          ),
+                          child: GoogleMap(
+                            mapType: MapType.normal,
+                            initialCameraPosition: CameraPosition(
+                              target: LatLng(
+                                positionStore.positionStream.value.latitude,
+                                positionStore.positionStream.value.longitude,
+                              ),
+                              zoom: 14.0,
+                            ),
+                            zoomControlsEnabled: false,
+                            mapToolbarEnabled: false,
+                            myLocationButtonEnabled: false,
+                            onMapCreated: (GoogleMapController controller) {
+                              _controller.complete(controller);
+                            },
+                            markers: MapHelper.getMarkers(
+                                context,
+                                mainStore.friendCapsulesStore.friendCapsules ??
+                                    [],
+                                snapshot.data),
+                          ),
                         ),
                       ),
                     ))
