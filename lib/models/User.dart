@@ -6,6 +6,7 @@ class User {
   List<String> friends;
   List<String> friendCapsules;
   List<String> friendCapsulesOpened;
+  List<String> friendRequests;
 
   DocumentReference reference;
 
@@ -14,7 +15,8 @@ class User {
       this.capsules,
       this.friends,
       this.friendCapsules,
-      this.friendCapsulesOpened});
+      this.friendCapsulesOpened,
+      this.friendRequests});
 
   factory User.fromSnapshot(DocumentSnapshot snapshot) {
     User newUser = User.fromJson(snapshot.data());
@@ -47,12 +49,19 @@ class User {
       friendCapsulesOpenedConverted.add(friendCapsuleOpened as String);
     });
 
+    List allFriendRequests = json['friendRequests'] as List;
+    List<String> friendRequestsConverted = <String>[];
+    allFriendRequests.forEach((friendRequest) {
+      friendRequestsConverted.add(friendRequest as String);
+    });
+
     return User(
       username: json['username'] as String,
       capsules: capsulesConverted,
       friends: friendsConverted,
       friendCapsules: friendCapsulesConverted,
       friendCapsulesOpened: friendCapsulesOpenedConverted,
+      friendRequests: friendRequestsConverted,
     );
   }
 
@@ -64,5 +73,6 @@ class User {
         'friends': instance.friends,
         'friendCapsules': instance.friendCapsules,
         'friendCapsulesOpened': instance.friendCapsulesOpened,
+        'friendRequests': instance.friendRequests,
       };
 }

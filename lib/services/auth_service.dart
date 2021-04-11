@@ -24,7 +24,8 @@ class AuthService {
             capsules: [],
             friends: [],
             friendCapsules: [],
-            friendCapsulesOpened: []);
+            friendCapsulesOpened: [],
+            friendRequests: []);
 
         await _firestore
             .collection('users')

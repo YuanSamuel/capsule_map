@@ -1,6 +1,6 @@
 import 'package:capsule_map/screens/capsules/capsules_screen.dart';
 import 'package:capsule_map/screens/home_screen.dart';
-import 'package:capsule_map/screens/profile_screen.dart';
+import 'package:capsule_map/screens/profile/profile_screen.dart';
 import 'package:capsule_map/screens/signup_screen.dart';
 import 'package:capsule_map/screens/welcome_screen.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
