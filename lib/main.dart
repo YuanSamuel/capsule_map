@@ -1,8 +1,12 @@
+import 'package:capsule_map/screens/createcapsule_screen.dart';
+import 'package:capsule_map/screens/profile/addfriends_screen.dart';
+import 'package:capsule_map/screens/profile/profile_screen.dart';
 import 'package:capsule_map/screens/root_screen.dart';
 import 'package:capsule_map/screens/signin_screen.dart';
 import 'package:capsule_map/screens/welcome_screen.dart';
 import 'package:capsule_map/stores/mainStore/main_store.dart';
 import 'package:capsule_map/stores/positionStore/position_store.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

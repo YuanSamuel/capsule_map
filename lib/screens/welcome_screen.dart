@@ -29,7 +29,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'Capsule App',
+                      'CapsuleMap',
                       style: TextStyle(
                         fontFamily: 'Open_Sans',
                         fontSize: 40.0,
